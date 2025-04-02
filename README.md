@@ -72,6 +72,27 @@ $ docker-compose down
 $ docker-compose down --rmi all --volumes
 ```
 
+## 備考1: Vue, React 利用時の Vite 設定
+
+初期の `vite.config.js` では画面が真っ白になるので以下の設定を加える。  
+
+```
+export default defineConfig({
+    plugins: [
+        // 省略
+    ],
+    server: {
+        host: true,
+        hmr: {
+            host: 'localhost'
+        },
+        watch: {
+            usePolling: true,
+        },
+    },
+});
+```
+
 # 参考記事
 
 [docker で Laravel 環境構築](https://qiita.com/rope19181/items/10da72374839630af83b)
